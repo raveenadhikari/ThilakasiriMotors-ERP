@@ -1,0 +1,6 @@
+/home/raveen/Desktop/thilakasirimotors-erp/backend/src/main/java/com/example/erp/ErpApplication.java
+/home/raveen/Desktop/thilakasirimotors-erp/backend/src/main/java/com/example/erp/config/WebSecurityConfig.java
+/home/raveen/Desktop/thilakasirimotors-erp/backend/src/main/java/com/example/erp/controller/AuthController.java
+/home/raveen/Desktop/thilakasirimotors-erp/backend/src/main/java/com/example/erp/model/User.java
+/home/raveen/Desktop/thilakasirimotors-erp/backend/src/main/java/com/example/erp/repository/UserRepository.java
+/home/raveen/Desktop/thilakasirimotors-erp/backend/src/main/java/com/example/erp/service/CustomUserDetailsService.java

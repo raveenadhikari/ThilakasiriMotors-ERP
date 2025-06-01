@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home - ERP</title>
+</head>
+<body>
+    <div th:replace="fragments/layout :: layout(
+        ~{::title},
+        ~{::content}
+    )">
+        <div th:fragment="title">
+            <title>Home - ERP</title>
+        </div>
+
+        <div th:fragment="content">
+            <h1>Welcome to Thilakasiri Motors ERP</h1>
+            <p>This is the dashboard/homepage.</p>
+        </div>
+    </div>
+</body>
+</html>

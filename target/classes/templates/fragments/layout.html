@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:fragment="layout (title, content)">
+<head>
+    <meta charset="UTF-8">
+    <title th:replace="${title}">ERP</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a th:href="@{/}">Home</a> |
+            <a th:href="@{/register}">Register</a> |
+            <span th:if="${session.loggedInUser == null}">
+                <a th:href="@{/login}">Login</a>
+            </span>
+            <span th:if="${session.loggedInUser != null}">
+                <a th:href="@{/logout}">Logout</a>
+            </span>
+        </nav>
+    </header>
+
+    <main>
+        <div th:replace="${content}"></div>
+    </main>
+</body>
+</html>

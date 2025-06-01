@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register</title>
+</head>
+<body>
+    <h2>Register</h2>
+    <form th:action="@{/register}" th:object="${user}" method="post">
+        <div>
+            <label>Full Name:</label>
+            <input type="text" th:field="*{fullName}" required />
+        </div>
+
+        <div>
+            <label>Gender:</label>
+            <select th:field="*{gender}" required>
+                <option value="">--Select--</option>
+                <option value="MALE">Male</option>
+                <option value="FEMALE">Female</option>
+                <option value="OTHER">Other</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Birthday:</label>
+            <input type="date" th:field="*{birthday}" required />
+        </div>
+
+        <div>
+            <label>NIC:</label>
+            <input type="text" th:field="*{nic}" required />
+        </div>
+
+        <div>
+            <label>Email:</label>
+            <input type="email" th:field="*{email}" required />
+        </div>
+
+        <div>
+            <label>Phone:</label>
+            <input type="text" th:field="*{phone}" required />
+        </div>
+
+        <div>
+            <label>Role:</label>
+            <select th:field="*{role}" required>
+                <option value="">--Select--</option>
+                <option value="STUDENT">customer</option>
+                <option value="TEACHER">staff</option>
+                <option value="ADMIN">Admin</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Password:</label>
+            <input type="password" th:field="*{password}" id="password" required />
+            <input type="checkbox" onclick="togglePassword()"> Show Password
+        </div>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        function togglePassword() {
+            const x = document.getElementById("password");
+            x.type = x.type === "password" ? "text" : "password";
+        }
+    </script>
+</body>
+</html>
