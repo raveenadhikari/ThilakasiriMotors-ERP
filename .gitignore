@@ -1,0 +1,14 @@
+/target/
+/.idea/
+/*.iml
+*.log
+*.class
+.DS_Store
+.env
+.mvn/
+/mvnw
+mvnw.cmd
+*.jar
+*.war
+*.db
+application.properties
