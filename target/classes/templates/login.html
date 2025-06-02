@@ -1,12 +1,138 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><title>Login</title></head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Thilakasiri Motors ERP</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
 <body>
-<h2>Login</h2>
-<form th:action="@{/login}" method="post">
-    <input type="text" name="username" placeholder="Email" required><br>
-    <input type="password" name="password" placeholder="Password" required><br>
-    <button type="submit">Login</button>
-</form>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1 class="auth-title">
+                    <i class="fas fa-car-side text-primary"></i> Thilakasiri Motors
+                </h1>
+                <p class="auth-subtitle">Sign in to your account</p>
+            </div>
+            
+            <!-- Display error message if login fails -->
+            <div th:if="${param.error}" class="alert alert-error mb-3">
+                <i class="fas fa-exclamation-circle"></i>
+                Invalid email or password. Please try again.
+            </div>
+            
+            <!-- Display logout message -->
+            <div th:if="${param.logout}" class="alert alert-success mb-3">
+                <i class="fas fa-check-circle"></i>
+                You have been logged out successfully.
+            </div>
+            
+            <form th:action="@{/login}" method="post">
+                <div class="form-group">
+                    <label for="username" class="form-label">
+                        <i class="fas fa-envelope"></i> Email Address
+                    </label>
+                    <input type="email" 
+                           id="username" 
+                           name="username" 
+                           class="form-input" 
+                           placeholder="Enter your email address" 
+                           required 
+                           autocomplete="username" />
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label">
+                        <i class="fas fa-lock"></i> Password
+                    </label>
+                    <div class="password-container">
+                        <input type="password" 
+                               id="password" 
+                               name="password" 
+                               class="form-input" 
+                               placeholder="Enter your password" 
+                               required 
+                               autocomplete="current-password" />
+                        <div class="password-toggle">
+                            <input type="checkbox" id="showPassword" onclick="togglePassword()">
+                            <label for="showPassword">Show Password</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="password-toggle">
+                        <input type="checkbox" name="remember-me">
+                        <span>Remember me</span>
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full-width">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
+                </button>
+            </form>
+            
+            <div class="auth-footer">
+                <p><a href="#" class="text-primary">Forgot your password?</a></p>
+                <p>Don't have an account? <a th:href="@{/register}">Create one here</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function togglePassword() {
+            const passwordField = document.getElementById("password");
+            const showPasswordCheckbox = document.getElementById("showPassword");
+            
+            if (showPasswordCheckbox.checked) {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
+        }
+        
+        // Add loading state to submit button
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            form.addEventListener('submit', function() {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing In...';
+                
+                // Re-enable button after 5 seconds as fallback
+                setTimeout(() => {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                }, 5000);
+            });
+        });
+    </script>
+    
+    <style>
+        .alert {
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+    </style>
 </body>
 </html>

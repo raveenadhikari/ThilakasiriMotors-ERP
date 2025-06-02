@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Home - ERP</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Thilakasiri Motors ERP</title>
 </head>
 <body>
     <div th:replace="fragments/layout :: layout(
@@ -9,13 +11,169 @@
         ~{::content}
     )">
         <div th:fragment="title">
-            <title>Home - ERP</title>
+            <title>Dashboard - Thilakasiri Motors ERP</title>
         </div>
-
+        
         <div th:fragment="content">
-            <h1>Welcome to Thilakasiri Motors ERP</h1>
-            <p>This is the dashboard/homepage.</p>
+            <div class="container">
+                <!-- Welcome Section -->
+                <div class="dashboard-welcome">
+                    <h1 class="dashboard-title">
+                        Welcome to Thilakasiri Motors ERP
+                    </h1>
+                    <p class="dashboard-subtitle">
+                        Your comprehensive automotive management solution
+                    </p>
+                </div>
+                
+                <!-- Quick Stats or Summary Cards -->
+                <div class="dashboard-cards">
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-users text-primary"></i> Customer Management</h3>
+                        <p>Manage customer information, service history, and communication.</p>
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Manage Customers
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-car text-primary"></i> Vehicle Inventory</h3>
+                        <p>Track vehicle stock, specifications, and availability.</p>
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> View Inventory
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-wrench text-primary"></i> Service Management</h3>
+                        <p>Schedule services, track repairs, and manage technicians.</p>
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Service Center
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-chart-bar text-primary"></i> Spare Parts</h3>
+                        <p>Manage spare parts inventory.</p>
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> View Inventory
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-dollar-sign text-primary"></i> Financial Management</h3>
+                        <p>Track sales, expenses, and financial performance.</p>
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Financial Dashboard
+                        </a>
+                    </div>
+                    
+                    <div class="dashboard-card">
+                        <h3><i class="fas fa-cog text-primary"></i> System Settings</h3>
+                        <p>Configure system preferences and user permissions.</p>
+                        <a href="#" class="btn btn-primary">
+                            <i class="fas fa-arrow-right"></i> Settings
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Recent Activity Section -->
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h2 class="card-title">
+                            <i class="fas fa-clock text-primary"></i> Recent Activity
+                        </h2>
+                    </div>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-user-plus"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p><strong>New customer registered:</strong> John Doe</p>
+                                <small class="text-muted">2 hours ago</small>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p><strong>Vehicle service completed:</strong> Toyota Prius - ABC-1234</p>
+                                <small class="text-muted">4 hours ago</small>
+                            </div>
+                        </div>
+                        
+                        <div class="activity-item">
+                            <div class="activity-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <div class="activity-content">
+                                <p><strong>New vehicle added to inventory:</strong> Honda Civic 2024</p>
+                                <small class="text-muted">1 day ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
+    
+    <style>
+        .activity-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .activity-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+            transition: background-color 0.3s ease;
+        }
+        
+        .activity-item:hover {
+            background-color: #e9ecef;
+        }
+        
+        .activity-icon {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .activity-content {
+            flex: 1;
+        }
+        
+        .activity-content p {
+            margin: 0 0 0.25rem 0;
+            color: #333;
+        }
+        
+        .activity-content small {
+            color: #6c757d;
+            font-size: 0.85rem;
+        }
+        
+        @media (max-width: 768px) {
+            .activity-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
+        }
+    </style>
 </body>
 </html>

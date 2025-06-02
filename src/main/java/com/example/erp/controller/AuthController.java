@@ -52,6 +52,11 @@ public class AuthController {
         }
     }
 
+    @ModelAttribute("loggedInUser")
+    public User loggedInUser(HttpSession session) {
+        return (User) session.getAttribute("loggedInUser");
+    }
+
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();

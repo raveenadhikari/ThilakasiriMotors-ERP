@@ -1,70 +1,160 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Register</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Thilakasiri Motors ERP</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <h2>Register</h2>
-    <form th:action="@{/register}" th:object="${user}" method="post">
-        <div>
-            <label>Full Name:</label>
-            <input type="text" th:field="*{fullName}" required />
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1 class="auth-title">
+                    <i class="fas fa-user-plus text-primary"></i> Register
+                </h1>
+                <p class="auth-subtitle">Create your account to get started</p>
+            </div>
+            
+            <form th:action="@{/register}" th:object="${user}" method="post">
+                <div class="form-group">
+                    <label for="fullName" class="form-label">
+                        <i class="fas fa-user"></i> Full Name
+                    </label>
+                    <input type="text" 
+                           id="fullName" 
+                           th:field="*{fullName}" 
+                           class="form-input" 
+                           placeholder="Enter your full name" 
+                           required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="gender" class="form-label">
+                        <i class="fas fa-venus-mars"></i> Gender
+                    </label>
+                    <select id="gender" th:field="*{gender}" class="form-select" required>
+                        <option value="">-- Select Gender --</option>
+                        <option value="MALE">Male</option>
+                        <option value="FEMALE">Female</option>
+                        <option value="OTHER">Other</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="birthday" class="form-label">
+                        <i class="fas fa-calendar-alt"></i> Birthday
+                    </label>
+                    <input type="date" 
+                           id="birthday" 
+                           th:field="*{birthday}" 
+                           class="form-input" 
+                           required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="nic" class="form-label">
+                        <i class="fas fa-id-card"></i> NIC
+                    </label>
+                    <input type="text" 
+                           id="nic" 
+                           th:field="*{nic}" 
+                           class="form-input" 
+                           placeholder="Enter your NIC number" 
+                           required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="form-label">
+                        <i class="fas fa-envelope"></i> Email
+                    </label>
+                    <input type="email" 
+                           id="email" 
+                           th:field="*{email}" 
+                           class="form-input" 
+                           placeholder="Enter your email address" 
+                           required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">
+                        <i class="fas fa-phone"></i> Phone
+                    </label>
+                    <input type="tel" 
+                           id="phone" 
+                           th:field="*{phone}" 
+                           class="form-input" 
+                           placeholder="Enter your phone number" 
+                           required />
+                </div>
+                
+                <div class="form-group">
+                    <label for="role" class="form-label">
+                        <i class="fas fa-user-tag"></i> Role
+                    </label>
+                    <select id="role" th:field="*{role}" class="form-select" required>
+                        <option value="">-- Select Role --</option>
+                        <option value="STUDENT">Customer</option>
+                        <option value="TEACHER">Staff</option>
+                        <option value="ADMIN">Admin</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label">
+                        <i class="fas fa-lock"></i> Password
+                    </label>
+                    <div class="password-container">
+                        <input type="password" 
+                               id="password" 
+                               th:field="*{password}" 
+                               class="form-input" 
+                               placeholder="Enter a strong password" 
+                               required />
+                        <div class="password-toggle">
+                            <input type="checkbox" id="showPassword" onclick="togglePassword()">
+                            <label for="showPassword">Show Password</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full-width">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+            </form>
+            
+            <div class="auth-footer">
+                <p>Already have an account? <a th:href="@{/login}">Sign in here</a></p>
+            </div>
         </div>
-
-        <div>
-            <label>Gender:</label>
-            <select th:field="*{gender}" required>
-                <option value="">--Select--</option>
-                <option value="MALE">Male</option>
-                <option value="FEMALE">Female</option>
-                <option value="OTHER">Other</option>
-            </select>
-        </div>
-
-        <div>
-            <label>Birthday:</label>
-            <input type="date" th:field="*{birthday}" required />
-        </div>
-
-        <div>
-            <label>NIC:</label>
-            <input type="text" th:field="*{nic}" required />
-        </div>
-
-        <div>
-            <label>Email:</label>
-            <input type="email" th:field="*{email}" required />
-        </div>
-
-        <div>
-            <label>Phone:</label>
-            <input type="text" th:field="*{phone}" required />
-        </div>
-
-        <div>
-            <label>Role:</label>
-            <select th:field="*{role}" required>
-                <option value="">--Select--</option>
-                <option value="STUDENT">customer</option>
-                <option value="TEACHER">staff</option>
-                <option value="ADMIN">Admin</option>
-            </select>
-        </div>
-
-        <div>
-            <label>Password:</label>
-            <input type="password" th:field="*{password}" id="password" required />
-            <input type="checkbox" onclick="togglePassword()"> Show Password
-        </div>
-
-        <button type="submit">Register</button>
-    </form>
-
+    </div>
+    
     <script>
         function togglePassword() {
-            const x = document.getElementById("password");
-            x.type = x.type === "password" ? "text" : "password";
+            const passwordField = document.getElementById("password");
+            const showPasswordCheckbox = document.getElementById("showPassword");
+            
+            if (showPasswordCheckbox.checked) {
+                passwordField.type = "text";
+            } else {
+                passwordField.type = "password";
+            }
         }
+        
+        // Form validation feedback
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form');
+            const inputs = form.querySelectorAll('input, select');
+            
+            inputs.forEach(input => {
+                input.addEventListener('blur', function() {
+                    if (this.value.trim() !== '') {
+                        this.style.borderColor = '#28a745';
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
